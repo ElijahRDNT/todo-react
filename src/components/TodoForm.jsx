@@ -16,7 +16,7 @@ export const TodoForm = ({addTodo}) => {
     <form className='TodoForm d-flex align-items-center justify-content-space-around' onSubmit={handleSubmit}>
         <div className="form-floating mb-3 me-3" >
             <input type="text" className="form-control" id="floatingInput" placeholder="Add Task Here" style={{width: '500px'}} value={value} onChange={(e) => setValue(e.target.value)}/>
-            <label htmlFor="floatingInput">Input Task Here</label>
+            <label htmlFor="floatingInput" style={{color:"#5E1B89", opacity:"30%"}}>Input Task Here</label>
         </div>
         <div className="col-auto">
             <button type="submit" className="btn btn-primary mb-3 todo-btn" style={{background: '#5E1B89', border: '2px solid #FF7F4D'}}>Add Task</button>

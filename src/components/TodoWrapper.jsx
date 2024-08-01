@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClipboard } from '@fortawesome/free-solid-svg-icons'
 import './TodoWrapper.css'
 import { TodoForm } from './TodoForm'
 import { v4 as uuidv4 } from 'uuid';
@@ -10,12 +12,21 @@ export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]) 
 
   const addTodo = todo => {
-    setTodos(todos =>[...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false}]);
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric',
+      hour12: true 
+    };
+    setTodos(todos =>[...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false, createdAt: new Date().toLocaleString('en-US', options)}]);
     console.log(todos);
   }
 
   useEffect(() => {
     if (todos.length === 0) return;
+    console.log(todos);
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
@@ -32,7 +43,13 @@ export const TodoWrapper = () => {
     );
   }
 
-  const deleteTodo = (id) => setTodos(todos.filter((todo) => todo.id !== id));
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+    if (todos.length == 1){
+      setTodos([]);
+      localStorage.removeItem('todos');
+    }
+  }
 
   const editTodo = (id) => {
     setTodos(
@@ -52,7 +69,10 @@ export const TodoWrapper = () => {
 
   return (
     <div className='TodoWrapper' style={{display: "inline-block", border: "1px solid #5E1B89"}}>
-      <h1>ToDo List</h1>
+      <div style={{ display: "flex", alignItems: "center", marginLeft:"10px", paddingBottom:"15px"}}>
+        <FontAwesomeIcon icon={faClipboard} style={{ fontSize: "30px", marginRight: "10px", color:"#5E1B89" }} />
+        <h1 style={{ margin: 0 }}>ToDo List</h1>
+      </div>
         <TodoForm addTodo={addTodo} />
         {todos.map((todo) =>{
           console.log(todo.id);

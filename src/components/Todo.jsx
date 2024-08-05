@@ -1,20 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import Modal from 'react-bootstrap/Modal';
 
 
-export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
+export const Todo = ({task, toggleComplete, deleteTodo, editTodo, deadlineDate, deadlineTime}) => {
   console.log(task)
+  const [modalShow, setModalShow] = useState(false);
 
-  const renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props} style={{...props.style, opacity: '85%'}}>
-      {task.createdAt}
-    </Tooltip>
-  );
+  // const renderTooltip = (props) => (
+  //   <Tooltip id="button-tooltip" {...props} style={{...props.style, opacity: '85%'}}>
+  //     {task.createdAt}
+  //   </Tooltip>
+  // );
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton className='modal-head'>
+          <Modal.Title id="contained-modal-title-vcenter" className='details-head'>
+            Task Details
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>{task.task}</h4>
+          <p>
+            Created: {task.createdAt} <br />
+            Due Date: {task.deadlineDate} <br />
+            Due Time: {task.deadlineTime}
+          </p>
+        </Modal.Body>
+      </Modal>
+    );
+  }
 
 
 
@@ -29,19 +56,25 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
     marginRight: '10px',
     background: "rgba(94, 27, 137, 0.5)",
     fontFamily: "'Roboto Slab'",
-    fontSize: "12px"
+    fontSize: "12px",
+    border: "solid 1px #F8FFFE"
   };
 
   return (
     <div className='Todo d-flex justify-content-between align-items-center tasks'>
       <div className='Todo d-flex align-items-center' style={{padding: '0rem', marginBottom: "0px"}}>
-      <OverlayTrigger
+      {/* <OverlayTrigger
       placement="right"
       delay={{ show: 250, hide: 300 }}
       overlay={renderTooltip}
-      >
-        <Button variant="success" style={circleButtonStyle}>i</Button>
-      </OverlayTrigger>
+      > */}
+        <Button variant="primary" style={circleButtonStyle} onClick={() => setModalShow(true)}>i</Button>
+
+        <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        />
+      {/* </OverlayTrigger> */}
       <p className={`${task.completed ? "completed" : ""}`} >{task.task}</p>
       </div>
 
@@ -62,8 +95,8 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
                   Are you sure you want to delete this task?
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => deleteTodo(task.id)}>Yes</button>
+                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" style={{backgroundColor: "#5E1B89", border: "solid 1px #FF7F4D"}}>Cancel</button>
+                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => deleteTodo(task.id)} style={{backgroundColor: "#FF7F4D", border: "solid 1px #5E1B89"}}>Yes</button>
                 </div>
               </div>
             </div>

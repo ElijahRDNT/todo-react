@@ -133,6 +133,25 @@ p{
 
 .form-control{
   width: 30rem;
+  width: 100%;
+  padding: 5px 8px !important;
+  height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+  min-height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+  line-height: 1.25;
+  display: block;
+}
+
+.form-container {
+  display: flex !important;
+  gap: 1rem; /* Adjust the gap as needed */
+}
+
+.form-floating {
+  flex: 1 !important;
+}
+
+.input-time {
+  width: 10rem !important;
 }
 
 .input-placeholder{
@@ -174,6 +193,34 @@ p{
 
 .dropdown-item{
   color: #5E1B89;
+}
+
+.fs-5{
+  color: #5E1B89;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+}
+
+.modal-body{
+  color: #5E1B89;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+}
+
+.details-head{
+  color: #F8FFFE;
+  font-family: "Lato", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.modal-head{
+  background: linear-gradient(to right, #5E1B89, #FF7F4D 80%);;
+}
+
+.modal-footer .btn.btn-primary.del-modal1{
+  background-color: #5E1B89 !important;
+  border: solid 1px #FF7F4D;
 }
 
 @media (max-width: 768px) {

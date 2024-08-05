@@ -17,7 +17,7 @@ export const TodoWrapper = () => {
   const [allCompleted, setAllCompleted] = useState(false);
   const [deleteAction, setDeleteAction] = useState(null); // To track the delete action
 
-  const addTodo = todo => {
+  const addTodo = (todo, deadlineDate, deadlineTime) => {
     const options = { 
       year: 'numeric', 
       month: 'long', 
@@ -26,7 +26,7 @@ export const TodoWrapper = () => {
       minute: 'numeric',
       hour12: true 
     };
-    setTodos(todos =>[...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false, createdAt: new Date().toLocaleString('en-US', options)}]);
+    setTodos(todos =>[...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false, createdAt: new Date().toLocaleString('en-US', options), deadlineDate, deadlineTime}]);
     console.log(todos);
   }
 
@@ -67,11 +67,11 @@ export const TodoWrapper = () => {
     );
   }
 
-  const editTask = (task, id) => {
+  const editTask = (task, id, deadlineDate, deadlineTime) => {
     if (task.length !== 0){
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
+        todo.id === id ? { ...todo, task, deadlineDate, deadlineTime, isEditing: !todo.isEditing } : todo
       )
     );
   }};
@@ -147,8 +147,8 @@ export const TodoWrapper = () => {
                   Are you sure you want to delete {deleteAction === 'all' ? 'all tasks' : 'the completed tasks'}?
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleDeleteConfirmed}>Yes</button>
+                  <button type="button" className="btn btn-secondary del-modal1" data-bs-dismiss="modal" style={{backgroundColor: "#5E1B89", border: "solid 1px #FF7F4D"}}>Cancel</button>
+                  <button type="button" className="btn btn-primary del-modal2" data-bs-dismiss="modal" style={{backgroundColor: "#FF7F4D", border: "solid 1px #5E1B89"}} onClick={handleDeleteConfirmed}>Yes</button>
                 </div>
               </div>
             </div>

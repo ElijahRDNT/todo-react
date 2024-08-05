@@ -16,6 +16,8 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
     </Tooltip>
   );
 
+
+
   const circleButtonStyle = {
     width: '20px',
     height: '20px',
@@ -46,8 +48,27 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
       <div>
         <input onChange={() => toggleComplete(task.id)} className={`${task.completed ? "completed" : ""} form-check-input`} type="checkbox" checked={task.completed} value="" id="flexCheckDefault" style={{cursor:"pointer", alignItems:"center", marginRight:"12px", marginTop:"5px"}}/>
         <FontAwesomeIcon className="edit-icon" icon={faPenToSquare} onClick={() => editTodo(task.id)} />
-        <FontAwesomeIcon className="delete-icon" icon={faTrash} onClick={() => deleteTodo(task.id)} />
+        <FontAwesomeIcon className="delete-icon" icon={faTrash} type='button' data-bs-toggle="modal" data-bs-target="#deleteSingleModal" />
       </div>
+      {/* start of modal */}
+      <div className="modal fade" id="deleteSingleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">Oops!</h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  Are you sure you want to delete this task?
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => deleteTodo(task.id)}>Yes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* end of modal */}
     </div>
   )
 }

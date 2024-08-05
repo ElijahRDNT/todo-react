@@ -146,6 +146,36 @@ p{
   color: #FF7F4D;
 }
 
+.custom-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 127, 77, 0);
+  border: 2px solid #FF7F4D;
+  padding: 0;
+  margin-right: 9px;
+  color: #FF7F4D !important;
+}
+
+.custom-dropdown-toggle::after {
+  display: none; /* Hide the default dropdown arrow */
+}
+
+.custom-dropdown-toggle .fa-ellipsis-v {
+  font-size: 20px;
+}
+
+.dropdown-menu{
+  background-color: #cfc8c1;
+}
+
+.dropdown-item{
+  color: #5E1B89;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 1.2rem;

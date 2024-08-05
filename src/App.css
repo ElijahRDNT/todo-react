@@ -30,8 +30,13 @@ h1 {
   font-family: 'Roboto Slab', serif;
 }
 
+p{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
 .TodoWrapper {
-  background: #FF7F4D;
+  background: #5E1B89;
   margin-top: 5rem;
   padding: 2rem;
   border-radius: 10px;
@@ -40,34 +45,59 @@ h1 {
 }
 
 .TodoForm {
-  /* font-family: "Roboto Slab", sans-serif; */
-  /* font-weight: 400; */
   font-style: normal;
   font-size: 15px;
   width: 100%;
-  margin-bottom: 1rem;
-}
-/*
-.todo-input {
-  outline: none;
-  background: none;
-  border: 1px solid #8758ff;
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  width: 300px;
-  color: #fff;
+  padding-bottom: 5%;
 }
 
-.todo-input::placeholder {
-  color: #ffffff4d;
-}
-*/
 .todo-btn {
   font-family: "Lato", sans-serif;
   font-weight: 600;
-  font-size: 13px;
-  padding: 0.8rem;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --bs-btn-hover-bg: #5E1B89;
+  --bs-btn-active-bg: rgba(255, 127, 77, .5);
+  border: none;
+
+}
+
+.add{
+  font-weight: 800;
+  font-size: 17px;
+  height: 30px;
+  width: 30px;
+  padding: 3px 7px 5px 7px !important;
+  margin-left: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #FF7F4D;
+  box-shadow: 0 0 0 5px rgba(255, 127, 77, .5), 0 0 0 10px rgba(255, 127, 77, .3) !important;
+}
+
+.edit{
+  background-color: #FF7F4D;
+  --bs-btn-hover-bg: #9D71BC;
+  box-shadow: 0 0 0 3px rgba(255, 127, 77, .5) !important;
+}
+
+.del-completed{
+  align-self: flex-start;
+  margin-bottom: 20px;
+  background-color: rgb(255, 127, 77);
+  border-radius: 60vh;
+  border: solid rgb(255, 127, 77, 0.9);
+  padding: 8px 13px 8px 13px;
+  font-size: 10px;
+  font-weight: 700;
+  --bs-btn-hover-bg: #9D71BC;
+  --bs-btn-hover-border-color: 0 0 0 5px rgba(255, 127, 77, .5) !important;;
+}
+
+.mb-3{
+  margin-bottom: 0;
 }
 
 .Todo {
@@ -90,12 +120,7 @@ h1 {
 .form-check-input:checked{
   background-color: #5E1B89;
 }
-/* 
-.incompleted {
-  color: #fff;
-  cursor: pointer;
-}
-*/
+
 .completed {
   color: #c5aeff;
   text-decoration: line-through;
@@ -105,4 +130,91 @@ h1 {
 .delete-icon {
   cursor: pointer;
 } 
- 
+
+.form-control{
+  width: 30rem;
+}
+
+.input-placeholder{
+  color: #5E1B89;
+  opacity: 30%;
+}
+
+.todo-icon{
+  font-size: 30px;
+  margin-right: 10px;
+  color: #FF7F4D;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  p{
+    margin-top: 15px;
+    font-size: 13px;
+  }
+
+  .TodoWrapper {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .todo-btn {
+    font-size: 0.8rem;
+  }
+
+  .del-completed {
+    padding: 4px 8px;
+    font-size: 0.5rem;
+  }
+
+  .Todo {
+    padding: 0.3rem;
+  }
+
+  .fa-trash {
+    margin-left: 0.5rem;
+  }
+
+  .form-control{
+    width: 15rem;
+    padding: 5px 8px !important;
+    font-size: 12px;
+    line-height: 5px
+  }
+
+  .input-placeholder{
+    font-size: 12px;
+    color: #5E1B89;
+    opacity: 30%;
+    line-height: 5px;
+  }
+
+  .todo-icon{
+    font-size: 22px;
+  }
+
+  .tasks{
+    padding: 0px 13px;
+  }
+
+  #floatingInput{
+    min-height: 45px !important;
+    height: 30px !important;
+  }
+
+  .add{
+    height: 15px;
+    width: 15px;
+    margin-right: 30px;
+  }
+
+  .edit{
+    height: 25px;
+    width: 50px;
+    margin-right: 20px;
+    font-size: 12px !important;
+  }
+}

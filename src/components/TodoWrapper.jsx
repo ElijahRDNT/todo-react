@@ -6,6 +6,7 @@ import { TodoForm } from './TodoForm'
 import { v4 as uuidv4 } from 'uuid';
 import { Todo } from './Todo';
 import { EditTodoForm } from './EditTodoForm';
+import Button from 'react-bootstrap/Button';
 uuidv4();
 
 export const TodoWrapper = () => {
@@ -27,6 +28,8 @@ export const TodoWrapper = () => {
   useEffect(() => {
     if (todos.length === 0) return;
     console.log(todos);
+    const completedTasks = todos.filter(todo => todo.completed); //filters completed tasks, creates an array of it
+    console.log(completedTasks);
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
@@ -60,20 +63,37 @@ export const TodoWrapper = () => {
   }
 
   const editTask = (task, id) => {
+    if (task.length !== 0){
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
       )
     );
+  }};
+
+  const noTasksMessage = todos.length === 0 ? '— Nothing To Show —' : '';
+
+  const deleteCompletedTasks = () => {
+    const updatedTodos = todos.filter(todo => !todo.completed);
+    setTodos(updatedTodos);
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
   };
 
+  // Determine if there are completed tasks
+  const hasCompletedTasks = todos.some(todo => todo.completed);
+
   return (
-    <div className='TodoWrapper' style={{display: "inline-block", border: "1px solid #5E1B89"}}>
+    <div className='TodoWrapper' style={{display: "flex",flexDirection: "column", border: "1px solid #5E1B89"}}>
       <div style={{ display: "flex", alignItems: "center", marginLeft:"10px", paddingBottom:"15px"}}>
-        <FontAwesomeIcon icon={faClipboard} style={{ fontSize: "30px", marginRight: "10px", color:"#5E1B89" }} />
+        <FontAwesomeIcon icon={faClipboard} className='todo-icon' />
         <h1 style={{ margin: 0 }}>ToDo List</h1>
       </div>
         <TodoForm addTodo={addTodo} />
+        {hasCompletedTasks && (
+        <Button variant="primary" size='sm' onClick={deleteCompletedTasks} className='del-completed'>
+          DELETE COMPLETED TASKS
+        </Button>
+        )}
         {todos.map((todo) =>{
           console.log(todo.id);
           return todo.isEditing ? (
@@ -84,9 +104,8 @@ export const TodoWrapper = () => {
               deleteTodo={deleteTodo}
               editTodo={editTodo}/>
           )
-          
         })}
-        
+        <h5>{noTasksMessage}</h5>
     </div>
   )
 }

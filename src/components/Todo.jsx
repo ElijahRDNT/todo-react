@@ -11,8 +11,8 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
   console.log(task)
 
   const renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      Created at: {task.createdAt}
+    <Tooltip id="button-tooltip" {...props} style={{...props.style, opacity: '85%'}}>
+      {task.createdAt}
     </Tooltip>
   );
 
@@ -26,20 +26,21 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo}) => {
     padding: '0',
     marginRight: '10px',
     background: "rgba(94, 27, 137, 0.5)",
-    fontFamily: "'Times New Roman'"
+    fontFamily: "'Roboto Slab'",
+    fontSize: "12px"
   };
 
   return (
-    <div className='Todo d-flex justify-content-between align-items-center'>
+    <div className='Todo d-flex justify-content-between align-items-center tasks'>
       <div className='Todo d-flex align-items-center' style={{padding: '0rem', marginBottom: "0px"}}>
       <OverlayTrigger
       placement="right"
-      delay={{ show: 250, hide: 400 }}
+      delay={{ show: 250, hide: 300 }}
       overlay={renderTooltip}
       >
         <Button variant="success" style={circleButtonStyle}>i</Button>
       </OverlayTrigger>
-      <p className={`${task.completed ? "completed" : ""}`} style={{marginLeft: '10px', marginTop:"10px"}}>{task.task}</p>
+      <p className={`${task.completed ? "completed" : ""}`} >{task.task}</p>
       </div>
 
       <div>

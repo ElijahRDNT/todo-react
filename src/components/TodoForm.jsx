@@ -30,10 +30,10 @@ export const TodoForm = ({addTodo}) => {
         </div>
 
         <div className="form-floating mb-3 me-3">
-            <input type="date" className="form-control" id="floatingInput" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} style={{color: "#5E1B89"}} required/>
+            <input type="date" className="form-control" id="floatingInput" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} style={{color: "rgba(94, 27, 137, 0.8)"}} required/>
         </div>
         <div className="form-floating mb-3 me-3">
-            <input type="time" className="form-control" id="floatingInput" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} required/>
+            <input type="time" className="form-control" id="floatingInput" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} style={{color: "rgba(94, 27, 137, 0.8)"}}  required/>
         </div>
         <div className="col-auto">
             <button type="submit" className="btn btn-primary mb-3 todo-btn add">+</button>

@@ -129,8 +129,8 @@ export const TodoWrapper = () => {
               </button> */}
 
             <ul className="dropdown-menu dropdown-menu-end">
-              <li><button className="dropdown-item" onClick={markAllAsUnfinished} disabled={!hasCheckedTasks}>Mark All as Unfinished</button></li>
               <li><button className="dropdown-item" onClick={markAllAsDone} disabled={!hasUncheckedTasks}>Mark All as Done</button></li>
+              <li><button className="dropdown-item" onClick={markAllAsUnfinished} disabled={!hasCheckedTasks}>Mark All as Unfinished</button></li>
               <li><button className="dropdown-item" onClick={() => setDeleteAction('completed')} disabled={!hasCheckedTasks} data-bs-toggle="modal" data-bs-target="#exampleModal">Delete Completed Tasks</button></li>
               <li><button className="dropdown-item" onClick={() => setDeleteAction('all')} disabled={todos.length === 0} data-bs-toggle="modal" data-bs-target="#exampleModal">Delete All</button></li>
             </ul>
@@ -172,7 +172,7 @@ export const TodoWrapper = () => {
               editTodo={editTodo}/>
           )
         })}
-        <h5>{noTasksMessage}</h5>
+        <h5 style={{color: "rgba(248, 255, 254, 0.8)"}}>{noTasksMessage}</h5>
     </div>
   )
 }

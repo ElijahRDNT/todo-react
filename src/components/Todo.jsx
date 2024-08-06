@@ -22,7 +22,7 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo, deadlineDate, 
     return (
       <Modal
         {...props}
-        size="lg"
+        size="sml"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -34,14 +34,39 @@ export const Todo = ({task, toggleComplete, deleteTodo, editTodo, deadlineDate, 
         <Modal.Body>
           <h4>{task.task}</h4>
           <p>
-            Created: {task.createdAt} <br />
-            Due Date: {task.deadlineDate} <br />
-            Due Time: {task.deadlineTime}
+            Created: &nbsp;&emsp; {task.createdAt} <br />
+            Due Date: &ensp; {formatDate(task.deadlineDate)} <br />
+            Due Time: &ensp;&nbsp;{formatTime(task.deadlineTime)} <br />
+            Status: &ensp;&ensp;&emsp;&nbsp;{task.completed ? 'Complete' : 'Unfinished'}
           </p>
         </Modal.Body>
       </Modal>
     );
   }
+
+  // Function to format date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
+  // Function to format time
+  const formatTime = (timeString) => {
+    const [hours, minutes] = timeString.split(':');
+    const date = new Date();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+
+    return date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+  };
 
 
 

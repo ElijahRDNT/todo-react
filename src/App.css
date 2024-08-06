@@ -119,6 +119,12 @@ p{
 
 .form-check-input:checked{
   background-color: #5E1B89;
+  border-color: #FF7F4D;
+}
+
+.form-check-input:focus {
+  border-color: #FF7F4D;
+  box-shadow: 0 0 0 .25rem rgba(255, 127, 77, .3);
 }
 
 .completed {
@@ -139,6 +145,11 @@ p{
   min-height: calc(3.5rem + calc(var(--bs-border-width)* 2));
   line-height: 1.25;
   display: block;
+}
+
+.form-control:focus {
+  border-color: none;
+  box-shadow: 0 0 0 .25rem rgba(255, 127, 77, .3);
 }
 
 .form-container {
@@ -177,6 +188,10 @@ p{
   padding: 0;
   margin-right: 9px;
   color: #FF7F4D !important;
+  --bs-btn-hover-bg: #9D71BC;
+  --bs-btn-active-bg: #9D71BC;
+  --bs-btn-hover-border-color: #FF7F4D;
+  --bs-btn-active-border-color: #FF7F4D;
 }
 
 .custom-dropdown-toggle::after {

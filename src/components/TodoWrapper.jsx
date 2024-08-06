@@ -147,8 +147,8 @@ export const TodoWrapper = () => {
                   Are you sure you want to delete {deleteAction === 'all' ? 'all tasks' : 'the completed tasks'}?
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary del-modal1" data-bs-dismiss="modal" style={{backgroundColor: "#5E1B89", border: "solid 1px #FF7F4D"}}>Cancel</button>
                   <button type="button" className="btn btn-primary del-modal2" data-bs-dismiss="modal" style={{backgroundColor: "#FF7F4D", border: "solid 1px #5E1B89"}} onClick={handleDeleteConfirmed}>Yes</button>
+                  <button type="button" className="btn btn-secondary del-modal1" data-bs-dismiss="modal" style={{backgroundColor: "#5E1B89", border: "solid 1px #FF7F4D"}}>Cancel</button>
                 </div>
               </div>
             </div>

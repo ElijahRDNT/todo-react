@@ -25,7 +25,7 @@ export const TodoForm = ({addTodo}) => {
   return (
     <form className='TodoForm d-flex align-items-center justify-content-space-around form-container' onSubmit={handleSubmit}>
         <div className="form-floating mb-3 me-3" >
-            <input type="text" className="form-control" id="floatingInput" placeholder="Add Task Here" value={value} onChange={(e) => setValue(e.target.value)}/>
+            <input type="text" className="form-control" id="floatingInput" placeholder="Add Task Here" value={value} onChange={(e) => setValue(e.target.value)} style={{color: '#5E1B89'}}/>
             <label className='input-placeholder' htmlFor="floatingInput">Input Task Here</label>
         </div>
 
